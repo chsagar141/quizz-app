@@ -1,0 +1,17 @@
+# --- .NET Core ---
+bin/
+obj/
+
+# --- Databases ---
+# We are NOT ignoring quiz.db because it has samples
+# But we DO ignore temporary SQLite transaction files
+*.db-shm
+*.db-wal
+*.db-journal
+
+# --- IDE Files ---
+.vs/
+.vscode/
+
+# --- Environment Settings ---
+appsettings.Development.json

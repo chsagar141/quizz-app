@@ -1,0 +1,92 @@
+@model List<QuizSystem.Models.Question>
+
+@{
+    ViewData["Title"] = "Quiz";
+}
+
+<style>
+    body {
+        background: url('/images/bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .container-main {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .glass-container {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        padding: 30px;
+        border-radius: 15px;
+        color: white;
+    }
+
+    .question-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .form-check {
+        margin-top: 8px;
+    }
+
+    .question-number {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+</style>
+
+<div class="container container-main">
+    <div class="glass-container">
+
+        <h2 class="mb-4">📝 Quiz</h2>
+
+        <form method="post" asp-action="Submit">
+            <input type="hidden" name="quizId" value="@ViewBag.QuizId" />
+            <input type="hidden" name="userId" value="@ViewBag.UserId" />
+
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="question-card">
+
+                    <div class="question-number">
+                        Question @(i + 1)
+                    </div>
+
+                    <p><b>@Model[i].Text</b></p>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answers[@i]" value="1" required />
+                        <label class="form-check-label">@Model[i].Option1</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answers[@i]" value="2" />
+                        <label class="form-check-label">@Model[i].Option2</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answers[@i]" value="3" />
+                        <label class="form-check-label">@Model[i].Option3</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="answers[@i]" value="4" />
+                        <label class="form-check-label">@Model[i].Option4</label>
+                    </div>
+
+                </div>
+            }
+
+            <button class="btn btn-success w-100 mt-3">
+                Submit Quiz
+            </button>
+        </form>
+
+    </div>
+</div>

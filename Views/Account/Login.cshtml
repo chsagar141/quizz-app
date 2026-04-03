@@ -1,0 +1,71 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    body {
+        background: url('/images/bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .center-container {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .glass-card {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 40px;
+        border-radius: 15px;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        width: 350px;
+        color: white;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+    }
+
+    .form-control::placeholder {
+        color: #ddd;
+    }
+
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+        box-shadow: none;
+    }
+
+    .error {
+        color: #ff6b6b;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="center-container">
+    <div class="glass-card">
+        <h3 class="text-center mb-3">Login</h3>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="error text-center">@ViewBag.Error</div>
+        }
+
+        <form method="post">
+            <input class="form-control mb-3" name="username" placeholder="Username" required />
+            <input class="form-control mb-3" name="password" type="password" placeholder="Password" required />
+
+            <button class="btn btn-primary w-100">Login</button>
+        </form>
+
+        <p class="text-center mt-3">
+            <a href="/Account/Register" style="color:white;">Create account</a>
+        </p>
+    </div>
+</div>

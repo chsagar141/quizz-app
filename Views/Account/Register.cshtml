@@ -1,0 +1,73 @@
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    body {
+        background: url('/images/bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .center-container {
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .glass-card {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 40px;
+        border-radius: 15px;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        width: 350px;
+        color: white;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+    }
+
+    .form-control::placeholder {
+        color: #ddd;
+    }
+
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+        box-shadow: none;
+    }
+
+    label {
+        margin-top: 10px;
+    }
+</style>
+
+<div class="center-container">
+    <div class="glass-card">
+        <h3 class="text-center mb-3">Register</h3>
+
+        <form method="post">
+            <label>Username</label>
+            <input class="form-control" name="Username" placeholder="Enter username" required />
+
+            <label>Password</label>
+            <input class="form-control" name="Password" type="password" placeholder="Enter password" required />
+
+            <label>Role</label>
+            <select class="form-control" name="Role">
+                <option>Student</option>
+                <option>Teacher</option>
+            </select>
+
+            <button class="btn btn-primary w-100 mt-3">Register</button>
+        </form>
+
+        <p class="text-center mt-3">
+            <a href="/Account/Login" style="color:white;">Already have an account? Login</a>
+        </p>
+    </div>
+</div>

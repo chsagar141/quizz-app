@@ -1,0 +1,89 @@
+@model List<QuizSystem.Models.Question>
+
+@{
+    ViewData["Title"] = "Questions";
+}
+
+<style>
+    body {
+        background: url('/images/bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .container-main {
+        margin-top: 40px;
+    }
+
+    .glass-container {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        padding: 30px;
+        border-radius: 15px;
+        color: white;
+    }
+
+    .question-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .option-list {
+        margin-left: 15px;
+    }
+
+    .btn-group {
+        margin-top: 10px;
+    }
+</style>
+
+<div class="container container-main">
+    <div class="glass-container">
+
+        <h2 class="mb-4">📚 Questions</h2>
+
+        @if (ViewBag.Message != null)
+        {
+            <p>@ViewBag.Message</p>
+        }
+
+        @foreach (var q in Model)
+        {
+            <div class="question-card">
+
+                <h5>@q.Text</h5>
+
+                <ul class="option-list">
+                    <li>@q.Option1</li>
+                    <li>@q.Option2</li>
+                    <li>@q.Option3</li>
+                    <li>@q.Option4</li>
+                </ul>
+
+                <p><b>Correct:</b> Option @q.CorrectOption</p>
+
+                <div class="btn-group">
+                    <a class="btn btn-sm btn-warning"
+                       asp-controller="Teacher"
+                       asp-action="EditQuestion"
+                       asp-route-id="@q.Id"
+                       asp-route-userId="@ViewBag.UserId">
+                        Edit
+                    </a>
+
+                    <a class="btn btn-sm btn-danger"
+                       asp-controller="Teacher"
+                       asp-action="DeleteQuestion"
+                       asp-route-id="@q.Id"
+                       asp-route-userId="@ViewBag.UserId">
+                        Delete
+                    </a>
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>

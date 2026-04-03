@@ -1,0 +1,96 @@
+@{
+    ViewData["Title"] = "Add Question";
+}
+
+<style>
+    body {
+        background: url('/images/bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .center-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .glass-card {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        padding: 30px;
+        border-radius: 15px;
+        width: 450px;
+        color: white;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+    }
+
+    .form-control::placeholder {
+        color: #ccc;
+    }
+
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+        box-shadow: none;
+    }
+
+    label {
+        margin-top: 10px;
+    }
+
+    .success-msg {
+        color: #4ade80;
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="center-container">
+    <div class="glass-card">
+
+        <h3 class="text-center mb-3">➕ Add Question</h3>
+
+        <form method="post">
+            <input type="hidden" name="quizId" value="@ViewBag.QuizId" />
+
+            <label>Question</label>
+            <input class="form-control mb-3" name="text" placeholder="Enter question" required />
+
+            <label>Option 1</label>
+            <input class="form-control mb-2" name="option1" required />
+
+            <label>Option 2</label>
+            <input class="form-control mb-2" name="option2" required />
+
+            <label>Option 3</label>
+            <input class="form-control mb-2" name="option3" required />
+
+            <label>Option 4</label>
+            <input class="form-control mb-3" name="option4" required />
+
+            <label>Correct Option (1-4)</label>
+            <input class="form-control mb-3" type="number" name="correctOption" min="1" max="4" required />
+
+            <button class="btn btn-primary w-100">Add Question</button>
+        </form>
+
+        @if (TempData["Message"] != null)
+        {
+            <div class="success-msg">@TempData["Message"]</div>
+        }
+
+        <a class="btn btn-outline-light w-100 mt-3"
+           asp-controller="Dashboard"
+           asp-action="Index"
+           asp-route-userId="@ViewBag.UserId">
+            Finish Quiz
+        </a>
+
+    </div>
+</div>

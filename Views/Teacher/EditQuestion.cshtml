@@ -1,0 +1,81 @@
+@model QuizSystem.Models.Question
+
+@{
+    ViewData["Title"] = "Edit Question";
+}
+
+<style>
+    body {
+        background: url('/images/bg.jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .center-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+
+    .glass-card {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        padding: 30px;
+        border-radius: 15px;
+        width: 450px;
+        color: white;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+    }
+
+    .form-control::placeholder {
+        color: #ccc;
+    }
+
+    .form-control:focus {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+        box-shadow: none;
+    }
+
+    label {
+        margin-top: 10px;
+    }
+</style>
+
+<div class="center-container">
+    <div class="glass-card">
+
+        <h3 class="text-center mb-3">✏️ Edit Question</h3>
+
+        <form method="post">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <input type="hidden" name="QuizId" value="@Model.QuizId" />
+
+            <label>Question</label>
+            <input class="form-control mb-3" name="Text" value="@Model.Text" required />
+
+            <label>Option 1</label>
+            <input class="form-control mb-2" name="Option1" value="@Model.Option1" required />
+
+            <label>Option 2</label>
+            <input class="form-control mb-2" name="Option2" value="@Model.Option2" required />
+
+            <label>Option 3</label>
+            <input class="form-control mb-2" name="Option3" value="@Model.Option3" required />
+
+            <label>Option 4</label>
+            <input class="form-control mb-3" name="Option4" value="@Model.Option4" required />
+
+            <label>Correct Option (1-4)</label>
+            <input class="form-control mb-3" type="number" name="CorrectOption" value="@Model.CorrectOption" min="1" max="4" required />
+
+            <button class="btn btn-warning w-100">Update Question</button>
+        </form>
+
+    </div>
+</div>
